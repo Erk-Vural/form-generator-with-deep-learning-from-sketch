@@ -31,14 +31,14 @@ def generate_elements(content, l_list):
 
 def get_element(element_name, index):
     if element_name == 'dropdown':
-        return "\n<input id=\"s" + str(index) + "\" list=\"items\" name=\"item\">\n" + \
-               "<datalist id=\"items\">\n" + \
-               "<option value=\"Item 1\">\n" + \
-               "<option value=\"Item 2\">\n" + \
-               "<option value=\"Item 3\">\n" + \
-               "</datalist>\n\n"
+        return "\n\t\t<input id=\"s" + str(index) + "\" list=\"items\" name=\"item\">\n" + \
+               "\t\t<datalist id=\"items\">\n" + \
+               "\t\t\t<option value=\"Item 1\">\n" + \
+               "\t\t\t<option value=\"Item 2\">\n" + \
+               "\t\t\t<option value=\"Item 3\">\n" + \
+               "\t\t</datalist>\n\n"
     else:
-        return "<input type=\"" + element_name + "\" id=\"s" + str(index) + "\">\n"
+        return "\t\t<input type=\"" + element_name + "\" id=\"s" + str(index) + "\">\n"
 
 
 def generate_ids(content, l_list):
@@ -54,13 +54,13 @@ def generate_ids(content, l_list):
 def get_id(positions, index):
     page_positions = cal_positions_on_page(positions)
 
-    return "#s" + str(index) + "{\n" + \
-           "position:absolute;\n" + \
-           "margin-top:" + str(page_positions[0]) + "px;\n" + \
-           "margin-left:" + str(page_positions[1]) + "px;\n" + \
-           "width:" + str(page_positions[2]) + "px;\n" + \
-           "height:" + str(page_positions[3]) + "px;\n" + \
-           "}\n"
+    return "#s" + str(index) + " {\n" + \
+           "\tposition: absolute;\n" + \
+           "\tmargin-top: " + str(page_positions[0]) + "px;\n" + \
+           "\tmargin-left: " + str(page_positions[1]) + "px;\n" + \
+           "\twidth: " + str(page_positions[2]) + "px;\n" + \
+           "\theight: " + str(page_positions[3]) + "px;\n" + \
+           "}\n\n"
 
 
 def cal_positions_on_page(positions):
