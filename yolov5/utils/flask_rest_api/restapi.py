@@ -43,4 +43,4 @@ if __name__ == "__main__":
     torch.hub._validate_not_a_forked_repo = lambda a, b, c: True
 
     model = torch.hub.load("ultralytics/yolov5", "yolov5s", force_reload=True)  # force_reload to recache
-    app.run(host="0.0.0.0", port=opt.port)  # debug=True causes Restarting with stat
+    app.label_txt_to_list(host="0.0.0.0", port=opt.port)  # debug=True causes Restarting with stat
