@@ -1,23 +1,23 @@
 def label_txt_to_list(file_name):
-    label_list = []
+    labels_list = []
 
     with open(file_name) as file:
         while line := file.readline().rstrip():
-            temp = []
-            for word in line.split():
-                temp.append(word)
-            temp.pop()
-            label_list.append(temp)
+            label = []
+            for item in line.split():
+                label.append(item)
+            label.pop()  # pops confidence-score from label list
+            labels_list.append(label)
 
-    label_list = replace_class_type_with_name(label_list)
+    labels_list = replace_class_type_with_name(labels_list)
 
     print("Label parameters read from .txt to label_list")
-    return label_list
+    return labels_list
 
 
 def replace_class_type_with_name(l_list):
-    for index, l_item in enumerate(l_list):
-        match l_item[0]:
+    for index, label in enumerate(l_list):
+        match label[0]:
             case '0':
                 l_list[index][0] = 'text'
             case '2':
