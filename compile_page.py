@@ -1,6 +1,6 @@
 from math import floor
 
-from utils.file_utils import create_result_template
+from util.file_utils import create_result_template
 
 
 def generate_form(labels_list):

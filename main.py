@@ -1,6 +1,6 @@
 import compile_page
-from utils.file_utils import clear_detect_dir
-from utils.get_parameters import label_txt_to_list
+from util.file_utils import clear_detect_dir
+from util.get_parameters import label_txt_to_list
 
 from yolov5 import detect
 

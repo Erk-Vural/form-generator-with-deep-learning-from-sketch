@@ -29,7 +29,3 @@ def create_result_template():
     src = Path(ROOT, 'default.html')
     dst = Path(ROOT, 'result.html')
     shutil.copy(src, dst)
-
-
-if __name__ == '__main__':  # Test functions
-    create_result_template()
