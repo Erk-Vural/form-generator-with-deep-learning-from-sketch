@@ -23,7 +23,7 @@ def generate_form(labels_list):
 
 def generate_elements(content, l_list):
     for outer_index, html_line in enumerate(content):
-        if html_line == "<form action=""/"">\n":
+        if '<form' in html_line:
             for inner_index, label in enumerate(l_list):
                 content.insert(outer_index + 2, get_element(label[0], inner_index + 1))
     return content
@@ -43,10 +43,11 @@ def get_element(element_name, index):
 
 def generate_ids(content, l_list):
     for outer_index, html_line in enumerate(content):
-        if html_line == "<style>\n":
+        if '<style' in html_line:
             for inner_index, label in enumerate(l_list):
-                del label[0]
-                content.insert(outer_index + 2, get_id(label[0], inner_index + 1))
+                if len(label) == 5:
+                    del label[0]  # Deletes class from list
+                content.insert(outer_index + 2, get_id(label, inner_index + 1))
     return content
 
 
@@ -66,8 +67,7 @@ def cal_positions_on_page(positions):
     height = 810  # pixels
     width = 1440  # pixels
 
-    # 0->margin-top, 1->margin-left, 2->width, 3->height
-    return [floor((float(positions[2]) - (float(positions[4]) / 2)) * height),  # margin-top
-            floor((float(positions[1]) - (float(positions[3]) / 2)) * width),  # margin-left
-            floor(float(positions[3]) * width),  # width
-            floor(float(positions[4]) * height)]  # height
+    return [floor((float(positions[1]) - (float(positions[3]) / 2)) * height),  # margin-top
+            floor((float(positions[0]) - (float(positions[2]) / 2)) * width),  # margin-left
+            floor(float(positions[2]) * width),  # width
+            floor(float(positions[3]) * height)]  # height
